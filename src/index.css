@@ -63,15 +63,3 @@ section{
      scroll-snap-align: center;    /*scrolling to center of section */
 }
 
-section:nth-child(1){
-    background-color: blue;
-}
-section:nth-child(2){
-    background-color: rgb(153, 9, 146);
-}
-section:nth-child(3){
-    background-color: rgb(166, 202, 22);
-}
-section:nth-child(4){
-    background-color: rgb(39, 188, 92);
-}
