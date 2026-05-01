@@ -3,6 +3,31 @@
     overflow: hidden;
     display: flex;
 }
+.bg{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.hImg{
+    position: absolute;
+    
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    height: 80%;
+    width: max-content;
+    
+}
+.hImg img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 .hSection{
     width:50%;
