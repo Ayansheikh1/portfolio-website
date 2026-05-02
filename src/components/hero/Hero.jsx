@@ -149,7 +149,9 @@ const Hero = () => {
           REACT • PHP • MYSQL
 
           {/* CONTACT BUTTON */}
-          <motion.a href="/#contact" 
+          
+        </motion.div>
+        <motion.a href="/#contact" 
           animate={{
             x:[200,0],
             opacity:[0,1]
@@ -201,7 +203,6 @@ const Hero = () => {
             </motion.div>
 
           </motion.a>
-        </motion.div>
 
       </div>
       <div className="bg">
