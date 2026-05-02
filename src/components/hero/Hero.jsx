@@ -123,13 +123,13 @@ const Hero = () => {
 
         {/* SOCIAL LINKS */}
         <motion.div variants={followVariants} initial="initial" animate="animate" className="follow">
-          <motion.a  variants={followVariants}  href="https://github.com/" target="_blank">
+          <motion.a  variants={followVariants}  href="https://github.com/Ayansheikh1" target="_blank">
             <motion.img variants={followVariants}  src="/github.png" alt="GitHub" />
           </motion.a>
-          <motion.a variants={followVariants}  href="https://linkedin.com/" target="_blank">
+          <motion.a variants={followVariants}  href="https://www.linkedin.com/in/ayansheikh111/" target="_blank">
             <motion.img variants={followVariants}  src="/linkedin.png" alt="LinkedIn" />
           </motion.a>
-          <motion.a variants={followVariants}  href="https://instagram.com/" target="_blank">
+          <motion.a variants={followVariants}  href="https://instagram.com/ayansheikh111" target="_blank">
             <motion.img variants={followVariants}  src="/instagram.png" alt="Instagram" />
           </motion.a>
           <motion.div className="followTextContainer">
