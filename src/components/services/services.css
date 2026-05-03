@@ -66,3 +66,28 @@ margin-bottom: 8px;
 .service:nth-child(3) .serviceIcon{
     background-color: #6c5c0c;
 }
+
+
+.counterList{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+
+}
+
+.counter{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;;
+}
+
+.counter h1{
+    font-size: 48px;
+    color: #dd4c62;
+}
+
+.counter p{
+    font-size: 13px;
+}

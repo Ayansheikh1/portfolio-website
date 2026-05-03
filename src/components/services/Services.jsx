@@ -1,4 +1,5 @@
 import ComputerModelContainer from "./computer/ComputerModelContainer"
+import Counter from "./Counter";
 import RobotModelContainer from "./robot/RobotModelContainer"
 import ServerModelContainer from "./server/ServerModelContainer"
 import "./services.css"
@@ -47,6 +48,10 @@ const Services = () => {
 
                 )}
            
+          </div>
+          <div className="counterList">
+           <Counter from={0} to={12} text="Projects Built" />
+           <Counter from={0} to={6} text="Technologies Used" />
           </div>
       </div>
       <div className="sSection right"> 
