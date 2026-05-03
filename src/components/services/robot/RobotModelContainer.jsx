@@ -1,23 +1,33 @@
 import { Canvas } from "@react-three/fiber"
 import { Suspense } from "react"
-import { ServerModel } from "./ServerModel"
+import { RobotModel } from "./RobotModel"
 import { OrbitControls, PerspectiveCamera, Stage } from "@react-three/drei"
 
-const ServerModelContainer = () => {
+const RobotModelContainer = () => {
   return (
-    <Canvas>
-            <Suspense fallback="loading...">
-                <Stage environment="studio" intensity={10} >
-                     <ServerModel />
-                </Stage>
-               
-                <OrbitControls enableZoom={false} autoRotate/>
-                <PerspectiveCamera position={[0,-1,2]} zoom={0.7} makeDefault/>
-    
-    
-            </Suspense>
-        </Canvas>
+    <Canvas shadows dpr={[1, 2]} camera={{ position: [2, 1.5, 3], fov: 45 }}>
+  <Suspense fallback={null}>
+
+    {/* Lighting + Environment */}
+    <Stage
+      environment="city"
+      intensity={1}
+      shadows={{ type: 'accumulative', color: '#000000', opacity: 0.5, blur: 2 }}
+      adjustCamera={false}
+    >
+      <RobotModel scale={1.5} position={[0, -1, 0]} />
+    </Stage>
+
+    {/* Controls */}
+    <OrbitControls
+      enableZoom={false}
+      autoRotate
+      autoRotateSpeed={1.5}
+    />
+
+  </Suspense>
+</Canvas>
   )
 }
 
-export default ServerModelContainer
+export default RobotModelContainer
