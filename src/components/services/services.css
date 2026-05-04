@@ -91,3 +91,44 @@ margin-bottom: 8px;
 .counter p{
     font-size: 13px;
 }
+
+
+@media (max-width:1536px){
+    .service, .counterList{
+        width: 70%; 
+    }
+}
+
+@media (max-width:1280px){
+    .sTitle{
+        font-size: 128px;
+    }
+
+    .service{
+        width: 100%; 
+    }
+}
+
+@media (max-width:1024px){
+    .sTitle{
+        font-size: 48px;
+    }
+
+    .service , .counterList{
+        width: 100%; 
+    }
+}
+
+
+@media (max-width:768px){
+    .Services{
+        align-items: center;
+        justify-content: center;
+    }
+    .sSection{
+        width: 100%;
+    }
+    .sSection.right{
+        display: none;
+    } 
+} 

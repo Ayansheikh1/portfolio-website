@@ -15,7 +15,7 @@ const RobotModelContainer = () => {
       shadows={{ type: 'accumulative', color: '#000000', opacity: 0.5, blur: 2 }}
       adjustCamera={false}
     >
-      <RobotModel scale={1.5} position={[0, -1, 0]} />
+      <RobotModel scale={0.8} position={[0, -1, 0]} />
     </Stage>
 
     {/* Controls */}
