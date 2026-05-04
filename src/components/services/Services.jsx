@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import ComputerModelContainer from "./computer/ComputerModelContainer"
 import Counter from "./Counter";
 import RobotModelContainer from "./robot/RobotModelContainer"
@@ -75,6 +75,8 @@ const Services = () => {
 
  const inView = useInView(ref , {margin:"-100px"});
 
+ const[currentServiceId,setCurrentServiceId] = useState(1);
+
   return (
     <div className='Services'>
       <div className="sSection left">
@@ -90,7 +92,12 @@ const Services = () => {
           animate = {inView? "animate" : "initial"}
           className="serviceList">
                 {services.map((service)=>(
-                  <motion.div variants={listVariants} className="service" key={service.id}>
+                  <motion.div variants={listVariants} 
+                            className="service" 
+                            key={service.id} 
+                            onClick={() =>setCurrentServiceId(service.id)}
+                            
+                  >
                     <div className="serviceIcon">
                       <img src={service.img} alt="" />
                     </div>
@@ -111,6 +118,12 @@ const Services = () => {
           </div>
       </div>
       <div className="sSection right"> 
+
+        {
+        currentServiceId === 1 ? (<ComputerModelContainer/>) : currentServiceId ===2 ? (<ServerModelContainer />) : (<RobotModelContainer/>)
+      }        
+
+
         {/* <ComputerModelContainer/> */}
         {/* <ServerModelContainer /> */}
         {/* <RobotModelContainer/> */}

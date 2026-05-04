@@ -12,7 +12,7 @@ const ServerModelContainer = () => {
                 </Stage>
                
                 <OrbitControls enableZoom={false} autoRotate/>
-                <PerspectiveCamera position={[0,-1,2]} zoom={0.7} makeDefault/>
+                <PerspectiveCamera position={[-6,-1,2]} zoom={0.7} makeDefault/>
     
     
             </Suspense>
