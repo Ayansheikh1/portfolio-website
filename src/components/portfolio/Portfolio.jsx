@@ -31,16 +31,16 @@ const items = [
   }
 ];
 
-const ListItem = (items) =>{
+const ListItem = ({item}) =>{
   return(
     <div className="pItem">
-      <div className="Img">
-        <img src={items.img} alt="" />
+      <div className="pImg">
+        <img src={item.img} alt="" />
       </div>
       <div className="pText">
-        <h1>{items.title}</h1>
-        <p>{items.desc}</p>
-        <a href={items.link}>
+        <h1>{item.title}</h1>
+        <p>{item.desc}</p>
+        <a href={item.link}>
           <button>View Project</button>
         </a>
       </div>
@@ -50,13 +50,18 @@ const ListItem = (items) =>{
 
 const Portfolio = () => {
   return (
-    <div className=''>
+    <div className='portfolio'>
       <div className="pList">
         {items.map((item)=>(
-       ,
-       <ListItem ite/>
+       
+       <ListItem item={item} key={item.id}/>
         ))}
       </div>
+      <section/> 
+      <section/>
+      <section/>
+       
+
     </div>
   )
 }
