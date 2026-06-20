@@ -22,17 +22,23 @@
 }
 
 .pItem:nth-child(1){
-background: linear-gradient(to right,#12071f,#210b3a);
+  background: linear-gradient(to right, #12071f, #1b0930);
 }
-.pItem:nth-child(2){
-background: linear-gradient(to right,#210b3a,#27084a);
 
+.pItem:nth-child(2){
+  background: linear-gradient(to right, #1b0930, #2b0d4d);
 }
+
 .pItem:nth-child(3){
-background: linear-gradient(to right,#27084a,#220345);
+  background: linear-gradient(to right, #2b0d4d, #4a148c);
 }
+
 .pItem:nth-child(4){
-background: linear-gradient(to right,#220345,#12071f);
+  background: linear-gradient(to right, #4a148c, #2b0d4d);
+}
+
+.pItem:nth-child(5){
+  background: linear-gradient(to right, #2b0d4d, #12071f);
 }
 
 .pImg {

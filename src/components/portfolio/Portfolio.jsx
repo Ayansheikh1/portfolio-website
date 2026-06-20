@@ -1,15 +1,18 @@
+import { useRef } from "react";
 import "./portfolio.css"
+import { useScroll, useTransform } from "motion/react";
+import { motion } from "motion/react";
 
 const items = [
-  
+
   {
     id: 1,
     img: "/p1.jpg",
     title: "AI Interview Preparation Platform",
     desc: "A full-stack MERN application powered by Google Gemini AI that generates personalized interview questions, identifies skill gaps, creates study plans, and tailors resumes to job descriptions with PDF export.",
     link: "https://github.com/Ayansheikh1/GEN-AI"
-}
-  ,{
+  }
+  , {
     id: 2,
     img: "/p2.jpg",
     title: "Amazon Clone Website",
@@ -39,8 +42,10 @@ const items = [
   }
 ];
 
-const ListItem = ({item}) =>{
-  return(
+const ListItem = ({ item }) => {
+  
+
+  return (
     <div className="pItem">
       <div className="pImg">
         <img src={item.img} alt="" />
@@ -57,18 +62,30 @@ const ListItem = ({item}) =>{
 }
 
 const Portfolio = () => {
+
+  const ref = useRef();
+
+  const { scrollYProgress } = useScroll({ target: ref });
+
+  const xTranslate = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [0, -window.innerWidth * items.length]
+
+  );
   return (
-    <div className='portfolio'>
-      <div className="pList">
-        {items.map((item)=>(
-       
-       <ListItem item={item} key={item.id}/>
+    <div className='portfolio' ref={ref} >
+      <motion.div className="pList" style={{ x: xTranslate }}>
+        {items.map((item) => (
+
+          <ListItem item={item} key={item.id} />
         ))}
-      </div>
-      <section/> 
-      <section/>
-      <section/>
-       
+      </motion.div>
+      <section />
+      <section />
+      <section />
+      <section />
+
 
     </div>
   )
