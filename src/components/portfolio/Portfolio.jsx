@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState,useEffect } from "react";
 import "./portfolio.css"
 import { useScroll, useTransform } from "motion/react";
 import { motion } from "motion/react";
@@ -63,7 +63,16 @@ const ListItem = ({ item }) => {
 
 const Portfolio = () => {
 
-  const ref = useRef();
+  const [containerDistance,setContainerDistance] = useState(0);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if(ref.current){
+      const rect = ref.current.getBoundingClientRect();
+      setContainerDistance(rect.left);
+    }
+  }, [])
+  
 
   const { scrollYProgress } = useScroll({ target: ref });
 
@@ -76,11 +85,16 @@ const Portfolio = () => {
   return (
     <div className='portfolio' ref={ref} >
       <motion.div className="pList" style={{ x: xTranslate }}>
+        <div className="empty" style={
+          {width: window.innerWidth-containerDistance, 
+          // backgroundColor:"pink"
+          }} />
         {items.map((item) => (
 
           <ListItem item={item} key={item.id} />
         ))}
       </motion.div>
+      <section />
       <section />
       <section />
       <section />
