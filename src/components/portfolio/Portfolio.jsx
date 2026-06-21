@@ -1,7 +1,8 @@
 import { useRef, useState,useEffect } from "react";
 import "./portfolio.css"
-import { useScroll, useTransform } from "motion/react";
+import { useInView, useScroll, useTransform } from "motion/react";
 import { motion } from "motion/react";
+
 
 const items = [
 
@@ -42,21 +43,73 @@ const items = [
   }
 ];
 
+ const imgVariants = {
+    initial:{
+      x: -500,
+      y:500,
+      opacity:0
+    },
+    animate:{
+      x:0,
+      y:0,
+      opacity:1,
+      transition:{
+        duration:0.5,
+        ease:"easeInOut"
+      }
+    }
+  }
+
+  const textVariants = {
+    initial:{
+      x:500,
+      y:500,
+      opacity:0
+    },
+    animate:{
+      x:0,
+      y:0,
+      opacity:1,
+      transition:{
+        duration:0.5,
+        ease:"easeInOut",
+        staggerChildren: 0.05,
+      },
+
+    }
+  }
+  
+
 const ListItem = ({ item }) => {
+
+const ref = useRef();
+const isInView = useInView(ref,{margin:"-100px"});
+ 
   
 
   return (
-    <div className="pItem">
-      <div className="pImg">
+    <div className="pItem" ref={ref}>
+      <motion.div 
+      className="pImg" 
+      variants={imgVariants} 
+      animate={isInView?"animate":"initial"}
+      >
         <img src={item.img} alt="" />
-      </div>
-      <div className="pText">
-        <h1>{item.title}</h1>
-        <p>{item.desc}</p>
-        <a href={item.link}>
+
+      </motion.div>
+
+      <motion.div 
+      className="pText"
+       variants={textVariants} 
+      animate={isInView?"animate":"initial"}
+      >
+        <motion.h1 variants={textVariants} >{item.title}</motion.h1>
+        <motion.p  variants={textVariants} >{item.desc}</motion.p>
+        <motion.a href={item.link} target="_blank" variants={textVariants} 
+        >
           <button>View Project</button>
-        </a>
-      </div>
+        </motion.a>
+      </motion.div>
     </div>
   );
 }
