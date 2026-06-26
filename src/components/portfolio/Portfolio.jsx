@@ -153,6 +153,33 @@ const Portfolio = () => {
       <section />
       <section />
 
+      <div className="pProgress">
+        <svg width="100%" height="100%" viewBox="0 0 160 160">
+          <circle 
+          cx="80"
+          cy="80"
+          r="70"
+          fill="none"
+          stroke="#ddd"
+          strokeWidth={20}
+          />
+
+          <motion.circle 
+          cx="80"
+          cy="80"
+          r="70"
+          fill="none"
+          stroke="#dd4c62"
+          strokeWidth={20}
+          style={{pathLength:scrollYProgress}}
+          transform="rotate(-90 80 80)"
+          />
+        
+
+        </svg>
+    
+      </div>
+
 
     </div>
   )
