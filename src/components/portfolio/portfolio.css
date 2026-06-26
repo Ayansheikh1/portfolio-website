@@ -86,4 +86,55 @@
   position: sticky;
   left:0;
   bottom:80%;
+} 
+
+@media (max-width:1536px){
+  .pItem {
+    
+    gap: 50px;
+}
+}
+
+@media (max-width:1200px){
+  .pText h1 {
+    font-size: 48px;
+}
+}
+
+@media (max-width:1024px){
+  .pItem {
+    flex-direction: column;
+    
+}
+.pImg,
+.pText{
+  width: 80%;
+}
+
+.pProgress{
+  
+  
+  left:100%;
+  bottom:50px;
+} 
+
+
+
+}
+
+@media (max-width:768px){
+  
+  
+
+.pProgress{
+  
+  
+ width: 50px;
+ height: 50px;
+ bottom:100px;
+
+} 
+
+
+
 }
