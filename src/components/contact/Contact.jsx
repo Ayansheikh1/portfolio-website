@@ -3,6 +3,7 @@ import  { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 
 import { motion, useInView } from "motion/react";
+import ContactSvg from "./ContactSvg";
 
 
 
@@ -82,7 +83,9 @@ const Contact = () => {
 
         </motion.form>
       </div>
-      <div className="cSection">SVG</div>
+      <div className="cSection">
+        <ContactSvg/>
+      </div>
     </div>
   )
 }
