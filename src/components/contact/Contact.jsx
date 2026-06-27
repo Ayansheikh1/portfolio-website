@@ -12,7 +12,7 @@ const Contact = () => {
   const[error,setError] = useState(false);
 
   const sendEmail = (e)=>{
-    e.preventDefaukt();
+    e.preventDefault();
 
      emailjs
       .sendForm(import.meta.env.VITE_SERVICE_ID,
