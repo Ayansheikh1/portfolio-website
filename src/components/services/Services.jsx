@@ -52,19 +52,19 @@ const services =[
     id: 1,
     img: "/frontend.png",
     title: "Frontend Development",
-    counter: 20,
+    counter: 15,
   },
   {
     id: 2,
     img: "/backend.png",
     title: "Backend Development",
-    counter: 15,
+    counter: 5,
   },
   {
     id: 3,
     img: "/fullstack.png",
     title: "Full Stack Projects",
-    counter: 10,
+    counter: 3,
   },
 ];
 
