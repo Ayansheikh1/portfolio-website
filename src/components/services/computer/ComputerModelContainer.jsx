@@ -7,7 +7,7 @@ import { OrbitControls, PerspectiveCamera, Stage } from "@react-three/drei"
 const ComputerModelContainer = () => {
   return (
     <Canvas>
-        <Suspense fallback="loading...">
+        <Suspense fallback={null}>
             <Stage environment="night" intensity={0.5} >
                  <ComputerModel/>
             </Stage>
