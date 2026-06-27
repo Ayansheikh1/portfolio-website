@@ -22,6 +22,7 @@ const refreshUniforms = [
 	'emissiveMap',
 	'envMap',
 	'envMapIntensity',
+	'envMapRotation',
 	'gradientMap',
 	'ior',
 	'iridescence',
@@ -216,7 +217,12 @@ class NodeMaterialObserver {
 
 			}
 
-			data.lights = this.getLightsData( renderObject.lightsNode.getLights() );
+			const { environmentIntensity, environmentRotation } = renderObject.scene;
+
+			data.environmentIntensity = environmentIntensity;
+			data.environmentRotation = environmentRotation.clone();
+
+			data.lights = this.getLightsData( renderObject.lightsNode.getLights(), [] );
 
 			this.renderObjects.set( renderObject, data );
 
@@ -242,8 +248,8 @@ class NodeMaterialObserver {
 			const attribute = attributes[ name ];
 
 			attributesData[ name ] = {
-				id: attribute.id,
-				version: attribute.version,
+				id: attribute.isInterleavedBufferAttribute ? attribute.data.uuid : attribute.id,
+				version: attribute.isInterleavedBufferAttribute ? attribute.data.version : attribute.version,
 			};
 
 		}
@@ -333,7 +339,7 @@ class NodeMaterialObserver {
 
 					if ( value.isTexture === true ) {
 
-						data[ property ] = { id: value.id, version: value.version };
+						data[ property ] = { id: value.id, version: 0 };
 
 					} else {
 
@@ -363,7 +369,7 @@ class NodeMaterialObserver {
 	 * @param {RenderObject} renderObject - The render object.
 	 * @param {Array<Light>} lightsData - The current material lights.
 	 * @param {number} renderId - The current render ID.
-	 * @return {boolean} Whether the given render object has changed its state or not.
+	 * @return {boolean} Whether the given render object is equal to its cached state or not.
 	 */
 	equals( renderObject, lightsData, renderId ) {
 
@@ -501,10 +507,13 @@ class NodeMaterialObserver {
 
 				}
 
-				if ( storedAttributeData.id !== attribute.id || storedAttributeData.version !== attribute.version ) {
+				const id = attribute.isInterleavedBufferAttribute ? attribute.data.uuid : attribute.id;
+				const version = attribute.isInterleavedBufferAttribute ? attribute.data.version : attribute.version;
 
-					storedAttributeData.id = attribute.id;
-					storedAttributeData.version = attribute.version;
+				if ( storedAttributeData.id !== id || storedAttributeData.version !== version ) {
+
+					storedAttributeData.id = id;
+					storedAttributeData.version = version;
 
 					geometryData._equal = false;
 					return false;
@@ -597,6 +606,24 @@ class NodeMaterialObserver {
 
 		}
 
+		// scene
+
+		const scene = renderObject.scene;
+
+		if ( scene.environment !== null && material.envMap === null ) {
+
+			if ( renderObjectData.environmentIntensity !== scene.environmentIntensity ||
+					renderObjectData.environmentRotation.equals( scene.environmentRotation ) === false ) {
+
+				renderObjectData.environmentIntensity = scene.environmentIntensity;
+				renderObjectData.environmentRotation.copy( scene.environmentRotation );
+
+				return false;
+
+			}
+
+		}
+
 		// center
 
 		if ( renderObjectData.center ) {
@@ -605,7 +632,7 @@ class NodeMaterialObserver {
 
 				renderObjectData.center.copy( object.center );
 
-				return true;
+				return false;
 
 			}
 
@@ -629,9 +656,9 @@ class NodeMaterialObserver {
 	 * @param {Array<Light>} materialLights - The material lights.
 	 * @return {Array<Object>} The lights data for the given material lights.
 	 */
-	getLightsData( materialLights ) {
+	getLightsData( materialLights, lights ) {
 
-		const lights = [];
+		lights.length = 0;
 
 		for ( const light of materialLights ) {
 
@@ -658,23 +685,25 @@ class NodeMaterialObserver {
 	 */
 	getLights( lightsNode, renderId ) {
 
-		if ( _lightsCache.has( lightsNode ) ) {
+		let cached = _lightsCache.get( lightsNode );
 
-			const cached = _lightsCache.get( lightsNode );
+		if ( cached === undefined ) {
 
-			if ( cached.renderId === renderId ) {
-
-				return cached.lightsData;
-
-			}
+			cached = { renderId: - 1, lightsData: [] };
+			_lightsCache.set( lightsNode, cached );
 
 		}
 
-		const lightsData = this.getLightsData( lightsNode.getLights() );
+		if ( cached.renderId === renderId ) {
 
-		_lightsCache.set( lightsNode, { renderId, lightsData } );
+			return cached.lightsData;
 
-		return lightsData;
+		}
+
+		cached.renderId = renderId;
+		this.getLightsData( lightsNode.getLights(), cached.lightsData );
+
+		return cached.lightsData;
 
 	}
 
