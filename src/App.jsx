@@ -5,6 +5,7 @@
 
 import { lazy } from "react"
 import LazyLoad from "react-lazyload"
+import { Suspense } from "react"
 
 const Hero = lazy(() => import("./components/hero/Hero"))
 const Portfolio = lazy(() => import("./components/portfolio/portfolio"))
