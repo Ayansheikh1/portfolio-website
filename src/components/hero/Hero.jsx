@@ -150,7 +150,7 @@ const Hero = () => {
           <br />
           WEB DEVELOPER
           <br />
-          REACT • PHP • MYSQL
+          REACT • MongoDB • Express.js
 
           {/* CONTACT BUTTON */}
           
