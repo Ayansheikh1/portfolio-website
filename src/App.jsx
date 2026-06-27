@@ -13,7 +13,7 @@ import { Suspense } from "react"
 // Lazy import each section of the portfolio.
 // These components are downloaded only when they are needed.
 const Hero = lazy(() => import("./components/hero/Hero"))
-const Portfolio = lazy(() => import("./components/portfolio/portfolio"))
+const Portfolio = lazy(() => import("./components/portfolio/Portfolio"))
 const Services = lazy(() => import("./components/services/Services"))
 const Contact = lazy(() => import("./components/contact/Contact"))  //---->DYNAMIC IMPORT
 
