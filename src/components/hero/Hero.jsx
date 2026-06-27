@@ -63,7 +63,7 @@ const Hero = () => {
 
           <motion.p variants={awardVariants} className="hDesc">
             I build responsive and dynamic web applications using modern technologies
-            like React, JavaScript and MySQL.
+            like React, JavaScript and MongoDB.
           </motion.p>
         </motion.div>
 
