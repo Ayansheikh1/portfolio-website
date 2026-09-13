@@ -159,6 +159,7 @@ const Portfolio = () => {
       <section />
       <section />
       <section />
+      <section />
 
       <div className="pProgress">
         <svg width="100%" height="100%" viewBox="0 0 160 160">
