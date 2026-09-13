@@ -40,6 +40,13 @@ const items = [
     title: "React Portfolio Website",
     desc: "An interactive developer portfolio built with React featuring animations, responsive design, and modern UI components.",
     link: "https://github.com/Ayansheikh1/portfolio-website"
+  },
+  {
+    id: 6,
+    img: "/p6.jpg",
+    title: "React Portfolio Website",
+    desc: "An interactive developer portfolio built with React featuring animations, responsive design, and modern UI components.",
+    link: "https://github.com/Ayansheikh1/portfolio-website"
   }
 ];
 
