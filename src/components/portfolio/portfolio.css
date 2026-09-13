@@ -22,22 +22,25 @@
 }
 
 .pItem:nth-child(1){
-  background: linear-gradient(to right, #12071f, #1b0930);
+  background: linear-gradient(to right, #12071f, #421f6a);
 }
 
 .pItem:nth-child(2){
-  background: linear-gradient(to right, #1b0930, #2b0d4d);
+  background: linear-gradient(to right, #421f6a, #1b0930);
 }
 
 .pItem:nth-child(3){
-  background: linear-gradient(to right, #2b0d4d, #4a148c);
+  background: linear-gradient(to right,#1b0930, #2b0d4d );
 }
 
 .pItem:nth-child(4){
-  background: linear-gradient(to right, #4a148c, #2b0d4d);
+  background: linear-gradient(to right, #2b0d4d, #4a148c);
 }
 
 .pItem:nth-child(5){
+  background: linear-gradient(to right, #4a148c, #2b0d4d);
+}
+.pItem:nth-child(6){
   background: linear-gradient(to right, #2b0d4d, #12071f);
 }
 
