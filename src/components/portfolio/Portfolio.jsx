@@ -44,9 +44,9 @@ const items = [
   {
     id: 6,
     img: "/p6.jpg",
-    title: "React Portfolio Website",
-    desc: "An interactive developer portfolio built with React featuring animations, responsive design, and modern UI components.",
-    link: "https://github.com/Ayansheikh1/portfolio-website"
+    title: "Taskzee Website",
+    desc: "A modern task management web application built with React featuring task organization, interactive UI, responsive design, and a clean user experience.",
+    link: "https://github.com/Ayansheikh1/Smart-TaskManager-Web"
   }
 ];
 
